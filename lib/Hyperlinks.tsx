@@ -13,6 +13,7 @@ export type CustomHyperlink = {
 export type HyperlinksProps = TextProps & {
 	text: string;
 	hyperlinkStyle?: StyleProp<TextStyle>;
+	mentionStyle?: StyleProp<TextStyle>;
 	autoDetectMentions?: boolean;
 	autoDetectHastags?: boolean;
 	customHyperlinks?: CustomHyperlink[];
@@ -44,6 +45,7 @@ type Match = {
 export default function Hyperlinks({
 	text,
 	hyperlinkStyle,
+	mentionStyle,
 	autoDetectMentions = true,
 	autoDetectHastags = true,
 	customHyperlinks = [],
@@ -169,10 +171,10 @@ export default function Hyperlinks({
 			{chunks.map((chunk, index) => (
 				<Text
 					onPress={chunk.onPress}
-					style={[style, chunk.onPress ? hyperlinkStyle : {}]}
+					style={[style, chunk.onPress ? chunk.label.includes('@') ? mentionStyle : hyperlinkStyle : {}]}
 					key={index}
 				>
-					{chunk.label}
+					{chunk.label.includes('@') ? chunk.label.slice(1, chunk.label.indexOf(']')) : chunk.label}
 				</Text>
 			))}
 		</Text>
