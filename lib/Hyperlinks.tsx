@@ -174,7 +174,7 @@ export default function Hyperlinks({
 					style={[style, chunk.onPress ? chunk.label.includes('@') ? mentionStyle : hyperlinkStyle : {}]}
 					key={index}
 				>
-					{chunk.label.includes('@') ? chunk.label.slice(1, chunk.label.indexOf(']')) : chunk.label}
+					{chunk.label.includes('@') ? chunk.label.slice(2, chunk.label.indexOf(']')) : chunk.label}
 				</Text>
 			))}
 		</Text>
