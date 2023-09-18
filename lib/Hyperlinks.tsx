@@ -190,7 +190,7 @@ function getMentions(text: string) {
 
 	while ((match = regex.exec(text)) != null) {
 		mentionedUsers.push({
-			username: match[0].replace("@", ""),
+			username: match[0],
 			start: match.index,
 			end: match[0].length + match.index,
 		});
