@@ -182,7 +182,7 @@ export default function Hyperlinks({
 function getMentions(text: string) {
 	const mentionedUsers: Mention[] = [];
 
-	const regex = /\B@[a-zA-Z0-9_]+/gi;
+	const regex = /((.)\[([^[]*)]\(([^(^)]*)\))+/gi;
 
 	let match;
 
